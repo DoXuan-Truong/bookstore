@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sách Trong Kho</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background-color: #fff;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table-container {
+        overflow-x: auto;
+    }
+
+    .search-container {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .search-container input {
+        width: 45%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .search-container button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .search-container button:hover {
+        background-color: #45a049;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 1em 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #cccccc;
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu > li > a {
+    color: black;
+    text-decoration: none;
+    padding: 1em;
+    display: block;
+}
+
+.menu > li:hover > a {
+    background-color: #575757;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 160px;
+}
+
+.dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+h1 {
+    color: #333;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+          <li class="dropdown">
+            <a href="/index.html">Nhập Bán Sách</a>
+            <ul class="dropdown-content">
+              <li><a href="nhap-the-loai.html">Nhập thể loại</a></li>
+              <li><a href="/html/phieu-nhap-sach.html">Phiếu nhập sách</a></li>
+              <li><a href="/html/nhap-tac-gia.html">Nhập tác giả</a></li>
+              <li><a href="/html/sach-trong-kho.html">Sách trong kho</a></li>
+              <li><a href="/html/hoa-don.html">Hóa đơn bán sách</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Tìm kiếm</a></li>
+          <li><a href="/html/bao-cao.html">Báo cáo</a></li>
+          <li><a href="#">Hỏi đáp</a></li>
+          <li><a href="/html/dang-nhap.html">Đăng nhập</a></li>
+        </ul>
+      </nav>
+<h1>Sách Trong Kho</h1>
+<div class="container">
+    <div class="search-container">
+        <input type="text" id="search-book" placeholder="Tìm kiếm sách...">
+        <input type="text" id="search-author" placeholder="Tìm kiếm tác giả...">
+        <button onclick="searchTable()">Tìm kiếm</button>
+    </div>
+    <div class="table-container">
+        <table id="book-table">
+            <thead>
+                <tr>
+                    <th>Mã Sách</th>
+                    <th>Tên Sách</th>
+                    <th>Tác Giả</th>
+                    <th>Mã Loại</th>
+                    <th>Mã Nhà Xuất Bản</th>
+                    <th>Số Lượng</th>
+                    <th>Giá Nhập</th>
+                    <th>Ghi Chú</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>Học HTML & CSS</td>
+                    <td>John Doe</td>
+                    <td>A01</td>
+                    <td>NXB Trẻ</td>
+                    <td>50</td>
+                    <td>100,000 VND</td>
+                    <td>Sách mới</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>JavaScript Cơ Bản</td>
+                    <td>Jane Smith</td>
+                    <td>A02</td>
+                    <td>NXB Giáo Dục</td>
+                    <td>30</td>
+                    <td>120,000 VND</td>
+                    <td>Sách cũ</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Python Nâng Cao</td>
+                    <td>Jim Brown</td>
+                    <td>A03</td>
+                    <td>NXB Khoa Học</td>
+                    <td>20</td>
+                    <td>150,000 VND</td>
+                    <td>Giảm giá</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Lập Trình C++</td>
+                    <td>Alice Johnson</td>
+                    <td>A04</td>
+                    <td>NXB Kỹ Thuật</td>
+                    <td>25</td>
+                    <td>130,000 VND</td>
+                    <td>Tái bản</td>
+                </tr>
+                <tr>
+                    <td>005</td>
+                    <td>Phát Triển Web</td>
+                    <td>Michael White</td>
+                    <td>A05</td>
+                    <td>NXB Công Nghệ</td>
+                    <td>40</td>
+                    <td>110,000 VND</td>
+                    <td>Mới nhất</td>
+                </tr>
+                <tr>
+                    <td>006</td>
+                    <td>Quản Trị Cơ Sở Dữ Liệu</td>
+                    <td>David Green</td>
+                    <td>A06</td>
+                    <td>NXB Đại Học</td>
+                    <td>35</td>
+                    <td>140,000 VND</td>
+                    <td>Sách tham khảo</td>
+                </tr>
+                <tr>
+                    <td>007</td>
+                    <td>Kỹ Thuật Lập Trình</td>
+                    <td>Chris Blue</td>
+                    <td>A07</td>
+                    <td>NXB Bách Khoa</td>
+                    <td>22</td>
+                    <td>160,000 VND</td>
+                    <td>Bản dịch</td>
+                </tr>
+                <tr>
+                    <td>008</td>
+                    <td>Cấu Trúc Dữ Liệu</td>
+                    <td>Emma Black</td>
+                    <td>A08</td>
+                    <td>NXB Công Nghệ Thông Tin</td>
+                    <td>28</td>
+                    <td>145,000 VND</td>
+                    <td>Tái bản</td>
+                </tr>
+                <tr>
+                    <td>009</td>
+                    <td>Hệ Thống Thông Tin</td>
+                    <td>Olivia Red</td>
+                    <td>A09</td>
+                    <td>NXB Kinh Tế</td>
+                    <td>18</td>
+                    <td>155,000 VND</td>
+                    <td>Ấn bản đặc biệt</td>
+                </tr>
+                <tr>
+                    <td>010</td>
+                    <td>Phân Tích Thiết Kế Hệ Thống</td>
+                    <td>Lucas Grey</td>
+                    <td>A10</td>
+                    <td>NXB Khoa Học Tự Nhiên</td>
+                    <td>26</td>
+                    <td>135,000 VND</td>
+                    <td>Đang khuyến mãi</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    function searchTable() {
+        var inputBook = document.getElementById("search-book").value.toUpperCase();
+        var inputAuthor = document.getElementById("search-author").value.toUpperCase();
+        var table = document.getElementById("book-table");
+        var tr = table.getElementsByTagName("tr");
+
+        for (var i = 1; i < tr.length; i++) {
+            var tdBook = tr[i].getElementsByTagName("td")[1];
+            var tdAuthor = tr[i].getElementsByTagName("td")[2];
+            if (tdBook && tdAuthor) {
+                var txtValueBook = tdBook.textContent || tdBook.innerText;
+                var txtValueAuthor = tdAuthor.textContent || tdAuthor.innerText;
+                if (txtValueBook.toUpperCase().indexOf(inputBook) > -1 && txtValueAuthor.toUpperCase().indexOf(inputAuthor) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

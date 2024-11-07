@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cửa Hàng Sách - Hỏi Đáp</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+
+      .question {
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      h2 {
+        cursor: pointer;
+      }
+
+      .answer {
+        display: none;
+      }
+
+      .toggle-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+
+      .toggle-btn:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cửa Hàng Sách - Hỏi Đáp</h1>
+      <div class="question">
+        <h2>Câu hỏi 1: Chính sách đổi trả là gì?</h2>
+        <p class="answer">
+          Chính sách đổi trả của cửa hàng sách là như sau: Bạn có thể đổi trả
+          sách trong vòng 30 ngày kể từ ngày mua, miễn là sách vẫn còn trong
+          tình trạng mới, chưa sử dụng và có hóa đơn mua hàng đi kèm. Đối với
+          sách đã sử dụng hoặc không có hóa đơn mua hàng, chúng tôi sẽ xem xét
+          trường hợp cụ thể để xử lý.
+        </p>
+        <button class="toggle-btn">Hiển thị Đáp Án</button>
+      </div>
+      <div class="question">
+        <h2>Câu hỏi 2: Có cung cấp dịch vụ bọc quà không?</h2>
+        <p class="answer">
+          Rất tiếc, hiện tại cửa hàng của chúng tôi không cung cấp dịch vụ bọc
+          quà cho sách. Tuy nhiên, chúng tôi luôn cố gắng cung cấp những dịch vụ
+          thuận tiện nhất cho khách hàng, vì vậy nếu bạn có bất kỳ yêu cầu nào
+          khác, xin đừng ngần ngại liên hệ với chúng tôi để được hỗ trợ.
+        </p>
+        <button class="toggle-btn">Hiển thị Đáp Án</button>
+      </div>
+      <div class="question">
+        <h2>Câu hỏi 3: Làm thế nào để đặt hàng?</h2>
+        <p class="answer">
+          Để đặt hàng, bạn có thể trực tiếp ghé qua cửa hàng của chúng tôi hoặc
+          truy cập vào trang web của chúng tôi và chọn sản phẩm mong muốn để đặt
+          mua. Sau đó, bạn cần điền vào biểu mẫu đặt hàng và tiến hành thanh
+          toán. Chúng tôi sẽ xác nhận đơn hàng của bạn và gửi hàng đến địa chỉ
+          bạn đã cung cấp.
+        </p>
+        <button class="toggle-btn">Hiển thị Đáp Án</button>
+      </div>
+      <div class="question">
+        <h2>Câu hỏi 4: Có hỗ trợ vận chuyển quốc tế không?</h2>
+        <p class="answer">
+          Chúng tôi cung cấp dịch vụ vận chuyển quốc tế cho khách hàng ở nước
+          ngoài. Bạn có thể chọn phương thức vận chuyển phù hợp và chúng tôi sẽ
+          gửi hàng đến địa chỉ của bạn. Phí vận chuyển sẽ được tính dựa trên
+          khoảng cách và phương thức vận chuyển bạn chọn.
+        </p>
+        <button class="toggle-btn">Hiển thị Đáp Án</button>
+      </div>
+      <div class="question">
+        <h2>Câu hỏi 5: Làm thế nào để liên hệ với chúng tôi?</h2>
+        <p class="answer">
+          Bạn có thể liên hệ với chúng tôi qua số điện thoại hoặc email được
+          cung cấp trên trang web của chúng tôi. Ngoài ra, bạn cũng có thể ghé
+          qua cửa hàng của chúng tôi trong giờ làm việc để được tư vấn trực
+          tiếp.
+        </p>
+        <button class="toggle-btn">Hiển thị Đáp Án</button>
+      </div>
+      <!-- Các câu hỏi và đáp án khác có thể được thêm tương tự -->
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleBtns = document.querySelectorAll(".toggle-btn");
+
+        toggleBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const answer = this.previousElementSibling;
+            if (answer.style.display === "block") {
+              answer.style.display = "none";
+              this.textContent = "Hiển thị Đáp Án";
+            } else {
+              answer.style.display = "block";
+              this.textContent = "Ẩn Đáp Án";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

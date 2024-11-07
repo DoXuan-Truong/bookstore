@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng Nhập</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    .login-container {
+        background-color: #fff;
+        padding: 20px 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .error {
+        color: red;
+        display: none;
+        margin-bottom: 10px;
+    }
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 1em 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #cccccc;
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu > li > a {
+    color: black;
+    text-decoration: none;
+    padding: 1em;
+    display: block;
+}
+
+.menu > li:hover > a {
+    background-color: #575757;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 160px;
+}
+
+.dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+h1 {
+    color: #333;
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <ul class="menu">
+          <li class="dropdown">
+            <a href="/index.html">Nhập Bán Sách</a>
+            <ul class="dropdown-content">
+              <li><a href="nhap-the-loai.html">Nhập thể loại</a></li>
+              <li><a href="/html/phieu-nhap-sach.html">Phiếu nhập sách</a></li>
+              <li><a href="/html/nhap-tac-gia.html">Nhập tác giả</a></li>
+              <li><a href="/html/sach-trong-kho.html">Sách trong kho</a></li>
+              <li><a href="/html/hoa-don.html">Hóa đơn bán sách</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Tìm kiếm</a></li>
+          <li><a href="/html/bao-cao.html">Báo cáo</a></li>
+          <li><a href="#">Hỏi đáp</a></li>
+          <li><a href="/html/dang-nhap.html">Đăng nhập</a></li>
+        </ul>
+      </nav>
+<div class="login-container">
+    <h2>Đăng Nhập</h2>
+    <div class="error" id="error-message">Tên đăng nhập hoặc mật khẩu không đúng!</div>
+    <input type="text" id="username" placeholder="Tên đăng nhập">
+    <input type="password" id="password" placeholder="Mật khẩu">
+    <button onclick="login()">Đăng Nhập</button>
+</div>
+
+<script>
+    function login() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username === "admin" && password === "123") {
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("error-message").style.display = "block";
+        }
+    }
+</script>
+</body>
+</html>

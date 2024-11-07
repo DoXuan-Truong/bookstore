@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập Thể Loại</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-container {
+            background-color: #e8f0fe;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .form-container input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 200px;
+        }
+        .form-container button {
+            padding: 10px 20px;
+            margin-right: 10px;
+        }
+        .form-container .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .table-container {
+            background-color: #ffffff;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #dddddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 1em 0;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #cccccc;
+}
+
+.menu > li {
+    position: relative;
+}
+
+.menu > li > a {
+    color: black;
+    text-decoration: none;
+    padding: 1em;
+    display: block;
+}
+
+.menu > li:hover > a {
+    background-color: #575757;
+    color: white;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    min-width: 160px;
+}
+
+.dropdown-content li a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content li a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+h1 {
+    color: #333;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="menu">
+              <li class="dropdown">
+                <a href="/index.html">Nhập Bán Sách</a>
+                <ul class="dropdown-content">
+                  <li><a href="/html/nhap-the-loai.html">Nhập thể loại</a></li>
+                  <li><a href="/html/phieu-nhap-sach.html">Phiếu nhập sách</a></li>
+                  <li><a href="/html/nhap-tac-gia.html">Nhập tác giả</a></li>
+                  <li><a href="/html/sach-trong-kho.html">Sách trong kho</a></li>
+                  <li><a href="/html/hoa-don.html">Hóa đơn bán sách</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Tìm kiếm</a></li>
+              <li><a href="/html/bao-cao.html">Báo cáo</a></li>
+              <li><a href="#">Hỏi đáp</a></li>
+              <li><a href="dang-nhap.html">Đăng nhập</a></li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        <h1>Nhập Thể Loại</h1>
+        <div class="form-container">
+            <div>
+                <label for="ma-the-loai">Mã thể loại:</label>
+                <input type="text" id="ma-the-loai" name="ma-the-loai" value="GK">
+            </div>
+            <div>
+                <label for="ten-the-loai">Tên thể loại:</label>
+                <input type="text" id="ten-the-loai" name="ten-the-loai" value="Giáo Khoa">
+            </div>
+            <div class="btn-group">
+                <div>
+                    <button onclick="addCategory()">Thêm</button>
+                    <button onclick="deleteCategory()">Xóa</button>
+                    <button onclick="editCategory()">Sửa</button>
+                    <button onclick="exitForm()">Thoát</button>
+                </div>
+                <div>
+                    <button onclick="saveCategory()">Lưu</button>
+                    <button onclick="cancelEdit()">Không</button>
+                </div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table id="categoryTable">
+                <thead>
+                    <tr>
+                        <th>Mã TL</th>
+                        <th>Tên TL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GK</td>
+                        <td>Giáo Khoa</td>
+                    </tr>
+                    <tr>
+                        <td>KH</td>
+                        <td>Khoa Học</td>
+                    </tr>
+                    <tr>
+                        <td>NN</td>
+                        <td>Ngoại ngữ</td>
+                    </tr>
+                    <tr>
+                        <td>TDTM</td>
+                        <td>Thể dục thẩm mỹ</td>
+                    </tr>
+                    <tr>
+                        <td>TLGD</td>
+                        <td>Sách tâm lý giáo dục</td>
+                    </tr>
+                    <tr>
+                        <td>TT</td>
+                        <td>Tiểu Thuyết</td>
+                    </tr>
+                    <tr>
+                        <td>TTTN</td>
+                        <td>Truyện tranh thiếu nhi</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <script src="">
+// Lấy reference đến bảng
+var categoryTable = document.getElementById("categoryTable");
+
+// Lấy reference đến input fields
+var maTheLoaiInput = document.getElementById("ma-the-loai");
+var tenTheLoaiInput = document.getElementById("ten-the-loai");
+
+// Hàm thêm thể loại
+function addCategory() {
+    // Lấy giá trị từ input fields
+    var maTheLoai = maTheLoaiInput.value;
+    var tenTheLoai = tenTheLoaiInput.value;
+
+    // Tạo một hàng mới trong bảng
+    var newRow = categoryTable.insertRow();
+    
+    // Tạo các ô trong hàng mới
+    var maCell = newRow.insertCell(0);
+    var tenCell = newRow.insertCell(1);
+    
+    // Gán giá trị cho các ô
+    maCell.innerHTML = maTheLoai;
+    tenCell.innerHTML = tenTheLoai;
+    
+    // Reset input fields
+    maTheLoaiInput.value = "";
+    tenTheLoaiInput.value = "";
+}
+
+// Hàm xóa thể loại
+function deleteCategory() {
+    var rows = categoryTable.rows;
+    for (var i = 0; i < rows.length; i++) {
+        rows[i].onclick = function() {
+            this.parentNode.removeChild(this);
+        };
+    }
+}
+
+// Hàm sửa thể loại
+function editCategory() {
+    // Lấy reference đến hàng được chọn
+    var selectedRow = categoryTable.rows[categoryTable.selectedIndex];
+
+    // Nếu có hàng được chọn, hiển thị thông tin trong hàng đó lên input fields
+    if (selectedRow) {
+        maTheLoaiInput.value = selectedRow.cells[0].innerHTML;
+        tenTheLoaiInput.value = selectedRow.cells[1].innerHTML;
+    }
+}
+
+// Hàm thoát
+function exitForm() {
+    // Reset input fields
+    maTheLoaiInput.value = "";
+    tenTheLoaiInput.value = "";
+}
+
+// Hàm lưu
+function saveCategory() {
+    // Code để lưu thông tin thể loại nếu cần
+}
+
+// Hàm hủy bỏ
+function cancelEdit() {
+    // Code để hủy bỏ việc sửa thông tin thể loại nếu cần
+}
+
+
+    </script>
+</body>
+</html>

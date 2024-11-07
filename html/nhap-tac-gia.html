@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhập Tác Giả</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+      }
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      main {
+        padding: 20px;
+      }
+      .form-container {
+        background-color: #e8f0fe;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+      }
+      .form-container input {
+        margin-bottom: 10px;
+        padding: 8px;
+        width: 200px;
+      }
+      .form-container button {
+        padding: 10px 20px;
+        margin-right: 10px;
+      }
+      .form-container .btn-group {
+        display: flex;
+        justify-content: space-between;
+      }
+      .table-container {
+        background-color: #ffffff;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #dddddd;
+      }
+      th,
+      td {
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #f2f2f2;
+        padding: 1em 0;
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1em;
+      }
+
+      .menu {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        background-color: #cccccc;
+      }
+
+      .menu > li {
+        position: relative;
+      }
+
+      .menu > li > a {
+        color: black;
+        text-decoration: none;
+        padding: 1em;
+        display: block;
+      }
+
+      .menu > li:hover > a {
+        background-color: #575757;
+        color: white;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        min-width: 160px;
+      }
+
+      .dropdown-content li a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content li a:hover {
+        background-color: #ddd;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 2em auto;
+        padding: 0 1em;
+      }
+
+      section {
+        margin-bottom: 2em;
+      }
+
+      h1 {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="menu">
+          <li class="dropdown">
+            <a href="/index.html">Nhập Bán Sách</a>
+            <ul class="dropdown-content">
+              <li><a href="nhap-the-loai.html">Nhập thể loại</a></li>
+              <li><a href="phieu-nhap-sach.html">Phiếu nhập sách</a></li>
+              <li><a href="nhap-tac-gia.html">Nhập tác giả</a></li>
+              <li><a href="/html/sach-trong-kho.html">Sách trong kho</a></li>
+              <li><a href="/html/hoa-don.html">Hóa đơn bán sách</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Tìm kiếm</a></li>
+          <li><a href="/html/bao-cao.html">Báo cáo</a></li>
+          <li><a href="#">Hỏi đáp</a></li>
+          <li><a href="/html/dang-nhap.html">Đăng nhập</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Cập Nhật Tác Giả</h1>
+      <div class="form-container">
+        <div>
+          <label for="ma-tac-gia">Mã tác giả:</label>
+          <input type="text" id="ma-tac-gia" name="ma-tac-gia" value="01" />
+        </div>
+        <div>
+          <label for="ten-tac-gia">Tác giả:</label>
+          <input
+            type="text"
+            id="ten-tac-gia"
+            name="ten-tac-gia"
+            value="Nguyễn Tiến Huy" />
+        </div>
+        <div>
+          <label for="lien-lac">Liên lạc:</label>
+          <input type="text" id="lien-lac" name="lien-lac" value="15 Lê Lợi" />
+        </div>
+        <div class="btn-group">
+          <div>
+            <button onclick="addAuthor()">Thêm</button>
+            <button onclick="deleteAuthor()">Xóa</button>
+            <button onclick="editAuthor()">Sửa</button>
+            <button onclick="exitForm()">Thoát</button>
+          </div>
+          <div>
+            <button onclick="saveAuthor()">Lưu</button>
+            <button onclick="cancelEdit()">Không</button>
+          </div>
+        </div>
+      </div>
+      <div class="table-container">
+        <table id="authorTable">
+          <thead>
+            <tr>
+              <th>Mã tác giả</th>
+              <th>Tên tác giả</th>
+              <th>Liên lạc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01</td>
+              <td>Nguyễn Tiến Huy</td>
+              <td>15 Lê Lợi</td>
+            </tr>
+            <tr>
+              <td>02</td>
+              <td>Nguyễn Văn Vy</td>
+              <td>63 Trần Hưng Đạo</td>
+            </tr>
+            <tr>
+              <td>03</td>
+              <td>Trần Duy Hùng</td>
+              <td>86/125 CMT8 Q3</td>
+            </tr>
+            <tr>
+              <td>04</td>
+              <td>Đinh Xuân Ngọc</td>
+              <td>194/7 Nguyễn Trãi</td>
+            </tr>
+            <tr>
+              <td>05</td>
+              <td>Nguyễn Hoàng Nam</td>
+              <td>93 Bình Thới</td>
+            </tr>
+            <tr>
+              <td>06</td>
+              <td>Lê Văn Tuấn</td>
+              <td>12/5 Trường Chinh</td>
+            </tr>
+            <tr>
+              <td>07</td>
+              <td>Hồ Văn Tú</td>
+              <td>85 Hoàng Văn Thụ</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
